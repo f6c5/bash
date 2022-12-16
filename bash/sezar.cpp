@@ -1,40 +1,45 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-void shift(char *kelime, int anahtar){
-	char c=kelime[0];
-	int i=0;
-	while(c!=0){
-		if(c>=65&&c<=90){
-			kelime[i]=(kelime[i]+anahtar);
-			if(kelime[i]>90)
-				kelime[i]=(kelime[i]%90)+64;
-			if(kelime[i]<65)
-				kelime[i]=(kelime[i]%90)+90;
-		}
-		if(c>=97&&c<=122){
-			kelime[i]=(kelime[i]+anahtar);
-			if(kelime[i]>122)
-				kelime[i]=(kelime[i]%122)+96;
-			if(kelime[i]<97)
-				kelime[i]=(kelime[i]%90)+122;
-		}
-		if(c==32){
+string shift(string metin, int anahtar){
 
-		}
-		i++;
-		c=kelime[i];
-	}
+	char ch;
+    for (int i = 0; metin[i] != '\0'; ++i){
+		
+        ch = metin[i];
+
+        if (ch >= 'a' && ch <= 'z'){
+            ch = ch + anahtar;
+
+            if (ch > 'z'){
+                ch = ch - 'z' + 'a' - 1;
+            }
+            metin[i] = ch;
+        }
+
+        else if (ch >= 'A' && ch <= 'Z'){
+			
+            ch = ch + anahtar;
+
+            if (ch > 'Z'){
+                ch = ch - 'Z' + 'A' - 1;
+            }
+            metin[i] = ch;
+        }
+    }
+	return metin;
 }
 int main(){
-	char kelime[100];
-	int anahtar;
-	cout<<"metni gir\n";
-	cin>>kelime;
+	
+	char metin[100];
+    int anahtar;
+	
+	cout << "Sifrelenecek Metni Girin: ";
+    cin.getline(metin, 100);
+
 	cout<<"kaydirma sayisini gir\n";
 	cin>>anahtar;
-	shift(kelime,anahtar);
-	cout<<"sifreli: "<<kelime<<endl;
-	shift(kelime,-anahtar);
-	cout<<"sifresiz: "<<kelime<<endl;
+	
+	cout<<"sifresiz: "<<metin<<endl;
+	cout<<"sifreli: "<<shift(metin,anahtar)<<endl;
 }
