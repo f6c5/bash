@@ -22,7 +22,7 @@ class Vig {
 				c += 'A' - 'a';
 			else if (c < 'A' || c > 'Z')
 				continue;
-			output += (c + k[j] - 2 * 'A') % 26 + 'A'; //added 'A' to bring it in range of ASCII alphabet [ 65-90 | A-Z ]
+			output += (c + k[j] - 2 * 'A') % 26 + 'A';
 			j = (j + 1) % k.length();
 		}
 		return output;
@@ -36,7 +36,7 @@ class Vig {
 				c += 'A' - 'a';
 			else if (c < 'A' || c > 'Z')
 				continue;
-			output += (c - k[j] + 26) % 26 + 'A';//added 'A' to bring it in range of ASCII alphabet [ 65-90 | A-Z ]
+			output += (c - k[j] + 26) % 26 + 'A';
 			j = (j + 1) % k.length();
 		}
 		return output;
